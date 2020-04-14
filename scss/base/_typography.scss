@@ -1,0 +1,58 @@
+/* Basic typography style for text*/
+
+html {
+  // This defines what 1 rem is
+  font-size: 20px;
+}
+
+h1,
+.h1 {
+  font-size: 34px;
+  line-height: 1.475;
+  @include respond-to(md){
+    font-size: 50px;
+  }
+  @include respond-to(xxl) {
+    font-size: 62px;
+  }
+}
+
+h2,
+.h2 {
+  font-size: 28px;
+  line-height: 1.9;
+  @include respond-to(md) {
+    font-size: 39px;
+  }
+}
+
+h3,
+.h3 {
+  @include respond-to(md) {
+  }
+}
+
+h4,
+.h4 {
+  font-size: 18px;
+  line-height: 2.05;
+
+  @include respond-to(md){
+    font-size: 18px;
+  }
+}
+
+p {
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 2.04;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  @include respond-to(md){
+    font-size: 20px;
+  }
+}
+

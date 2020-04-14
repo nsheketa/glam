@@ -1,0 +1,67 @@
+@import "../abstracts/custom-variables";
+
+
+@font-face {
+  font-family: 'NotoSansHant';
+  src: url('#{$fontsUrl}NotoSansTC-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NotoSansHant';
+  src: url('#{$fontsUrl}NotoSansTC-Light.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NotoSansHant';
+  src: url('#{$fontsUrl}NotoSansTC-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NotoSansHant';
+  src: url('#{$fontsUrl}NotoSansTC-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('#{$fontsUrl}OpenSans.eot');
+  src: url('#{$fontsUrl}OpenSans.eot?#iefix') format('embedded-opentype'),
+  url('#{$fontsUrl}OpenSans.woff2') format('woff2'),
+  url('#{$fontsUrl}OpenSans.woff') format('woff'),
+  url('#{$fontsUrl}OpenSans.ttf') format('truetype'),
+  url('#{$fontsUrl}OpenSans.svg#OpenSans') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('#{$fontsUrl}Lato-Black.eot');
+  src: url('#{$fontsUrl}Lato-Black.eot?#iefix') format('embedded-opentype'),
+  url('#{$fontsUrl}Lato-Black.woff2') format('woff2'),
+  url('#{$fontsUrl}Lato-Black.woff') format('woff'),
+  url('#{$fontsUrl}Lato-Black.ttf') format('truetype'),
+  url('#{$fontsUrl}Lato-Black.svg#Lato-Black') format('svg');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: '';
+  src: url('#{$fontsUrl}KozGoPr6N-Regular-AlphaNum.eot');
+  src: url('#{$fontsUrl}KozGoPr6N-Regular-AlphaNum.eot?#iefix') format('embedded-opentype'),
+  url('#{$fontsUrl}KozGoPr6N-Regular-AlphaNum.woff2') format('woff2'),
+  url('#{$fontsUrl}KozGoPr6N-Regular-AlphaNum.woff') format('woff'),
+  url('#{$fontsUrl}KozGoPr6N-Regular-AlphaNum.ttf') format('truetype'),
+  url('#{$fontsUrl}KozGoPr6N-Regular-AlphaNum.svg#KozGoPr6N-Regular-AlphaNum') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+

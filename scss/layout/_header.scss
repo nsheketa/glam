@@ -1,0 +1,350 @@
+.header {
+  position: absolute;
+  width: 100%;
+  padding: 20px 0;
+  z-index: 20;
+  @include transition-custom;
+
+  .main-container {
+    width: 100%;
+  }
+
+  &.is-active {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+    width: 100%;
+    height: 100vh;
+    background-color: $blueColor;
+    .header__logo {
+      display: none;
+    }
+    .header__lang {
+      opacity: 1;
+      visibility: visible;
+      z-index: 100;
+    }
+  }
+
+  @include respond-to(md) {
+    padding: 35px 0;
+    &.is-active {
+      background-color: transparent;
+      .header__logo {
+        display: block;
+      }
+    }
+  }
+  @include respond-to(xxl) {
+    padding: 85px 0;
+  }
+}
+
+.header__inner {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header__logo {
+  display: block;
+  font-size: 0;
+  width: 245px;
+  @include respond-to(md) {
+    width: 300px;
+  }
+  @include respond-to(lg) {
+    width: 350px;
+  }
+}
+
+.header-nav {
+  @include respond-max(1023) {
+    position: absolute;
+    top: 92px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+    transition: 0.3s all ease;
+    //transition-delay: 0.3s;
+    padding-bottom: 70px;
+    &.is-active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 99;
+    }
+  }
+  @include respond-to(md) {
+    display: flex;
+    margin-left: auto;
+  }
+}
+
+.header-nav__list {
+  font-size: inherit;
+  color: inherit;
+  padding: 0 20px;
+  @include respond-to(md) {
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+}
+
+.header-nav__list-item {
+  position: relative;
+  padding: 25px 0;
+  text-align: center;
+  border-bottom: 1px solid #fff;
+  font-size: 38px;
+  line-height: 1;
+  color: #fff;
+  overflow: hidden;
+  @include transition-04;
+  @include on-event {
+    &:not(.header-nav__list-item--dropdown) {
+      background-color: #dfe8f1;
+      color: $blueColor;
+    }
+  }
+  @include respond-to(md) {
+    padding: 0;
+    margin-left: 50px;
+    border-bottom: none;
+    font-size: 19px;
+    overflow: visible;
+
+    &:not(.header-nav__list-item--dropdown) {
+      @include linkHover(#fff);
+      color: #fff;
+      &:after {
+        bottom: -3px;
+      }
+    }
+    @include on-event {
+      &:not(.header-nav__list-item--dropdown) {
+        background-color: transparent;
+        color: #fff;
+      }
+    }
+  }
+  @include respond-to(xxl) {
+    margin-left: 75px;
+  }
+}
+
+.header-nav__list-item--dropdown {
+  position: relative;
+  &.is-active {
+    padding-bottom: 0;
+    .header-nav__list-link {
+      &:after {
+        transform: rotate(-135deg);
+      }
+    }
+  }
+  @include on-event {
+    background-color: transparent;
+  }
+  .header-nav__list-link {
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      right: -15px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      transform: rotate(45deg);
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      @include square(7px);
+    }
+  }
+  @include respond-to(md) {
+    &.is-active {
+      .header-nav__sublist {
+        transform: translateY(5px);
+        opacity: 1;
+        visibility: visible;
+        z-index: 5;
+      }
+    }
+  }
+}
+
+.header-nav__list-link {
+  position: relative;
+  color: inherit;
+  font-size: inherit;
+}
+
+.header-nav__sublist {
+  display: none;
+  font-size: inherit;
+  color: inherit;
+  background: $blueColor;
+  padding-top: 25px;
+  transform-origin: top center;
+
+  li {
+    color: #fff;
+    text-align: center;
+    padding: 25px 0;
+    border-bottom: 1px solid #fff;
+    &:first-of-type {
+      border-top: 1px solid #fff;
+    }
+    &:last-of-type {
+      border-bottom: none;
+    }
+    @include on-event {
+      background-color: #dfe8f1;
+      color: $blueColor;
+    }
+  }
+  a {
+    font-size: inherit;
+    color: inherit;
+  }
+  @include respond-to(md) {
+    display: block !important;
+    position: absolute;
+    left: -10px;
+    top: 100%;
+    padding: 10px;
+    min-width: 100px;
+    background: #dfe8f1;
+    padding-top: 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+    transform: translateY(10px);
+    transition: 0.6s all ease-in-out;
+    li {
+      text-align: left;
+      color: $blueColor;
+      padding: 10px 0;
+      border: none !important;
+      &:last-of-type {
+        padding-bottom: 0;
+      }
+      @include on-event {
+        background-color: transparent;
+        color: darken($blueColor, 10%);
+      }
+    }
+  }
+}
+
+.header__lang {
+  position: absolute;
+  left: 20px;
+  top: 0px;
+  margin: auto;
+  font-size: 38px;
+  line-height: 1;
+  color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+  a {
+    position: relative;
+    display: inline-block;
+    font-size: inherit;
+    color: inherit;
+    @include transition-04;
+    &:after {
+      content: '|';
+      display: inline-block;
+      vertical-align: bottom;
+      color: #fff;
+      margin: 0 3px 3px 7px;
+    }
+    &:last-of-type {
+      &:after {
+        display: none;
+      }
+    }
+    @include on-event {
+      text-shadow: 0px 0px 0px #fff;
+    }
+  }
+  @include respond-to(md) {
+    position: relative;
+    margin-right: 0;
+    right: auto;
+    left: auto;
+    bottom: auto;
+    top: auto;
+    margin-left: 40px;
+    font-size: 19px;
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+    a {
+      &:after {
+        margin-bottom: 2px;
+      }
+    }
+  }
+  @include respond-to(xxl) {
+    margin-left: 75px;
+  }
+}
+
+.header__hamburger {
+  display: block;
+  @include transition-04;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  bottom: 0;
+  margin: auto;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  border: 0 !important;
+  z-index: 100;
+  .line {
+    width: 34px;
+    height: 3px;
+    background-color: #fff;
+    display: block;
+    margin: 7px auto;
+    @include transition(0.4s all ease);
+    @include transform-origin(right);
+    position: relative;
+  }
+
+  &.is-active {
+    .line {
+      background-color: #fff;
+      &:nth-child(1) {
+        transform: translate(-4px, 22px) rotate(45deg);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-15px);
+      }
+      &:nth-child(3) {
+        transform: translate(-5px, -22px) rotate(-45deg);
+      }
+    }
+  }
+
+  @include on-event() {
+    .line {
+      //background-color: #fff;
+    }
+  }
+  @include respond-to(md) {
+    display: none;
+  }
+}
